@@ -1,0 +1,157 @@
+{
+  "steps": 18,
+  "lectures": 61,
+  "questions": 455,
+  "links": {
+    "leetcode": 269,
+    "gfg": 439,
+    "youtube": 387,
+    "article": 325
+  },
+  "issues": [
+    {
+      "id": "cstl",
+      "field": "gfg",
+      "value": "https://www.youtube.com/watch?v=RRVYpIET_RU",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "sbrrywithgivnsm",
+      "field": "gfg",
+      "value": "https://www.codingninjas.com/codestudio/problems/subarray-sums-i_1467103",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "cntnmbrfsbrryswithgivnxrk",
+      "field": "leetcode",
+      "value": "https://www.interviewbit.com/problems/subarray-with-given-xor/",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "chckifinptrryissrtd",
+      "field": "gfg",
+      "value": "https://www.codingninjas.com/codestudio/problems/ceiling-in-a-sorted-array_1825401",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "ggrssivcws",
+      "field": "leetcode",
+      "value": "https://www.spoj.com/problems/AGGRCOW/",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "bkllctinprblm",
+      "field": "leetcode",
+      "value": "https://www.naukri.com/code360/problems/allocate-books_1090540",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "SearchRowColumnWiseSortedMatrix",
+      "field": "gfg",
+      "value": "https://www.codingninjas.com/codestudio/problems/search-in-a-row-wise-and-column-wise-sorted-matrix_839811",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "findpklmnt-i",
+      "field": "gfg",
+      "value": "https://www.naukri.com/code360/problems/find-peak-element_7449073",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "rtinmz",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "mclringprblm",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "nxtsmllrlmnt",
+      "field": "leetcode",
+      "value": "https://www.interviewbit.com/problems/nearest-smaller-element/",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "mximmsmcmbintin",
+      "field": "leetcode",
+      "value": "https://www.interviewbit.com/problems/maximum-sum-combinations/",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "frctinlknpsckprblm",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "grdylgrithmtfindminimmnmbrfcins",
+      "field": "leetcode",
+      "value": "https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "nmtingsinnrm",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "minimmnmbrfpltfrmsrqirdfrrilwy",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "jbsqncingprblm",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "tpviwfbinrytr",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "bttmviwfbinrytr",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "bfs",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "dfs",
+      "field": "leetcode",
+      "value": "https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "implmnttri2prfixtr",
+      "field": "leetcode",
+      "value": "https://www.naukri.com/code360/problems/implement-trie_1387095",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "lngststringwithllprfixs",
+      "field": "leetcode",
+      "value": "https://www.naukri.com/code360/problems/complete-string_2687860",
+      "reason": "Wrong platform or invalid URL; left blank"
+    },
+    {
+      "id": "nmbrfdistinctsbstringsinstring",
+      "field": "leetcode",
+      "value": "https://www.naukri.com/code360/problems/count-distinct-substrings_985292",
+      "reason": "Wrong platform or invalid URL; left blank"
+    }
+  ]
+}

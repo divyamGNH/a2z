@@ -1,0 +1,26 @@
+{
+  "name": "a2z",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=a2z-frontend",
+    "build": "npm run build --workspace=a2z-frontend",
+    "typecheck": "npm run typecheck --workspace=a2z-frontend",
+    "api": "npm start --workspace=a2z-backend",
+    "api:dev": "npm run dev --workspace=a2z-backend",
+    "test": "node --test scripts/data.test.mjs",
+    "test:api": "npm test --workspace=a2z-backend",
+    "data:build": "node scripts/build-data.mjs",
+    "check:client": "node scripts/check-client-secrets.mjs"
+  },
+  "devDependencies": {
+    "dotenv": "^18.0.8"
+  },
+  "engines": {
+    "node": ">=24.13.0"
+  }
+}
