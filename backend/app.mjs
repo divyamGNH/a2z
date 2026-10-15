@@ -12,6 +12,7 @@ import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
 import { getMigrations } from 'better-auth/db/migration';
 import nodemailer from 'nodemailer';
 import { githubProviders } from './github.mjs';
+import { checkProductionConfig } from './config.mjs';
 
 const ids = new Set(JSON.parse(readFileSync(new URL('./data/question-ids.json', import.meta.url), 'utf8')));
 export async function createServer(options = {}) {
@@ -23,7 +24,7 @@ export async function createServer(options = {}) {
  const socialProviders = githubProviders(options.github);
  let secret = options.secret ?? process.env.BETTER_AUTH_SECRET;
  const emailReady = !!(process.env.SMTP_HOST && process.env.MAIL_FROM);
- if (production && (!secret || secret.length < 32 || !frontend.startsWith('https://') || !baseURL.startsWith('https://') || !emailReady)) throw Error('Production requires a strong BETTER_AUTH_SECRET, HTTPS FRONTEND_URL/BETTER_AUTH_URL, SMTP_HOST and MAIL_FROM.');
+ const { emailPasswordEnabled, emailVerificationRequired } = checkProductionConfig({ production, secret, frontend, baseURL, emailReady, githubEnabled: !!socialProviders.github });
  if (!secret) {
   const secretPath = join(storage, 'auth-secret');
   if (!existsSync(secretPath)) writeFileSync(secretPath, randomBytes(48).toString('base64url'), { mode: 0o600 });
@@ -42,7 +43,7 @@ export async function createServer(options = {}) {
   appName: 'A2Z Original Sheet', database: { dialect: new PostgresDialect({ pool: db }), type: 'postgres', schemaName: schema }, secret, baseURL, trustedOrigins: [frontend],
   socialProviders,
   account: { encryptOAuthTokens: true, accountLinking: { enabled: true, allowDifferentEmails: false } },
-  emailAndPassword: { enabled: true, minPasswordLength: 12, maxPasswordLength: 128, requireEmailVerification: production, revokeSessionsOnPasswordReset: true, ...(emailReady ? { sendResetPassword: async ({ user, url }) => send(user.email, 'Reset your A2Z password', url) } : {}) },
+  emailAndPassword: { enabled: emailPasswordEnabled, minPasswordLength: 12, maxPasswordLength: 128, requireEmailVerification: emailVerificationRequired, revokeSessionsOnPasswordReset: true, ...(emailReady ? { sendResetPassword: async ({ user, url }) => send(user.email, 'Reset your A2Z password', url) } : {}) },
   ...(emailReady ? { emailVerification: { sendOnSignUp: production, autoSignInAfterVerification: true, sendVerificationEmail: async ({ user, url }) => send(user.email, 'Verify your A2Z email address', url) } } : {}),
   session: { expiresIn: 60 * 60 * 24 * 30, updateAge: 60 * 60 * 24 },
   rateLimit: { enabled: true, window: 60, max: 100 },
@@ -71,7 +72,7 @@ export async function createServer(options = {}) {
  app.use('/api', rateLimit({ windowMs: 60000, limit: 300, standardHeaders: 'draft-8', legacyHeaders: false }));
  app.use((req, res, next) => { if (['POST','PATCH','PUT','DELETE'].includes(req.method) && req.headers.origin !== frontend) return res.status(403).json({ message: 'Untrusted request origin.' }); next(); });
  app.get('/api/health', (req, res) => res.json({ ok: true }));
- app.get('/api/config', (req, res) => res.json({ passwordResetAvailable: emailReady, emailVerificationRequired: production, githubEnabled: !!socialProviders.github }));
+ app.get('/api/config', (req, res) => res.json({ passwordResetAvailable: emailReady, emailPasswordEnabled, emailVerificationRequired, githubEnabled: !!socialProviders.github }));
  app.post('/api/auth/request-password-reset', (req, res, next) => emailReady ? next() : res.status(503).json({ message: 'Password recovery email is not configured on this server yet.' }));
  app.all('/api/auth/*splat', toNodeHandler(auth));
  app.use(express.json({ limit: '5mb' }));

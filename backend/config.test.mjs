@@ -1,0 +1,10 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { checkProductionConfig } from './config.mjs';
+const valid = { production: true, secret: 'x'.repeat(48), frontend: 'https://sheet.example.com', baseURL: 'https://api.example.com', emailReady: false, githubEnabled: true };
+test('Production GitHub-only login does not require SMTP',()=>assert.deepEqual(checkProductionConfig(valid),{emailPasswordEnabled:false,emailVerificationRequired:false}));
+test('Production email login requires configured mail and verification',()=>assert.deepEqual(checkProductionConfig({...valid,emailReady:true}),{emailPasswordEnabled:true,emailVerificationRequired:true}));
+test('Missing production settings identify variable names without printing values',()=>{assert.throws(()=>checkProductionConfig({...valid,secret:'private-short',frontend:'http://localhost:3000',baseURL:'invalid'}),e=>e.message.includes('BETTER_AUTH_SECRET')&&e.message.includes('FRONTEND_URL')&&e.message.includes('BETTER_AUTH_URL')&&!e.message.includes('private-short'));});
+test('Production requires a working configured sign-in method',()=>assert.throws(()=>checkProductionConfig({...valid,githubEnabled:false}),/GITHUB_CLIENT_ID/));
+test('Origin validation rejects paths and misleading HTTPS-looking strings',()=>{for(const frontend of ['https://','https://site.example/login','https://site.example/','https://user:pass@site.example','https://site.example?x=y'])assert.throws(()=>checkProductionConfig({...valid,frontend}),/FRONTEND_URL/);});
+test('Local email login remains available without SMTP',()=>assert.equal(checkProductionConfig({production:false}).emailPasswordEnabled,true));

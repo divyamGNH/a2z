@@ -62,7 +62,7 @@ Each app has its own package file and lockfile.
 | Backend | Render or a Node host | `backend` | `npm ci --workspaces=false` | `npm start` |
 | Database | Supabase Postgres | — | — | Use the session-pooler connection |
 
-Set `NEXT_PUBLIC_API_URL` on the frontend before building. Keep database, session, OAuth, and SMTP secrets only on the backend. Use same-site HTTPS domains or an API proxy for login cookies. Production email verification and password recovery require SMTP configuration.
+Set `NEXT_PUBLIC_API_URL` on the frontend before building. Keep database, session, OAuth, and SMTP secrets only on the backend. Use same-site HTTPS domains or an API proxy for login cookies. GitHub-only production login works without SMTP; email login, verification and password recovery require SMTP configuration.
 
 On Vercel, use the **Other** framework preset for this static export. `frontend/vercel.json` supplies the build/output settings and clean URLs; keep Root Directory set to `frontend`.
 

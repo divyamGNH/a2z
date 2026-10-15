@@ -40,7 +40,7 @@ Generate an auth secret locally:
 node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
 ```
 
-Production requires a strong auth secret, HTTPS frontend/API origins and SMTP configuration. Local email/password login works without SMTP; recovery reports that email is unavailable. Supabase is only the database host, with no Supabase Auth dependency.
+Production requires a strong auth secret, HTTPS frontend/API origins and at least one configured sign-in method (GitHub or SMTP-backed email). Without SMTP, production email/password login is disabled; GitHub login remains available. Local email/password login works without SMTP; recovery reports that email is unavailable. Supabase is only the database host, with no Supabase Auth dependency.
 
 ## GitHub OAuth
 
