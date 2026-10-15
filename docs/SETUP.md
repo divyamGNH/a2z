@@ -55,7 +55,9 @@ Use a separate production OAuth App with your deployed frontend homepage and `ht
 
 ## Frontend hosting
 
-For Vercel, import the repository and set Root Directory to `frontend`. Use the Next.js preset, install with `npm ci --workspaces=false`, build with `npm run build`, and publish `out`. Set `NEXT_PUBLIC_API_URL` before building; changing it requires rebuilding.
+For Vercel, import the repository and set Root Directory to `frontend`. Select **Other** as the framework preset, install with `npm ci --workspaces=false`, build with `npm run build`, and publish `out`. The checked-in `frontend/vercel.json` sets these static-hosting options and clean URLs for routes such as `/login`. Set `NEXT_PUBLIC_API_URL` before building; changing it requires rebuilding.
+
+Do not combine the Next.js framework preset with a manual `out` output override. That combination can make Vercel look for Next.js server manifests inside the static export, producing a missing `out/routes-manifest.json` error. The app still uses Next.js to build; Vercel serves its exported HTML/CSS/JavaScript without a Next.js backend.
 
 The frontend is a static export. Next.js has no API routes or server actions.
 

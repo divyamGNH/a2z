@@ -64,6 +64,8 @@ Each app has its own package file and lockfile.
 
 Set `NEXT_PUBLIC_API_URL` on the frontend before building. Keep database, session, OAuth, and SMTP secrets only on the backend. Use same-site HTTPS domains or an API proxy for login cookies. Production email verification and password recovery require SMTP configuration.
 
+On Vercel, use the **Other** framework preset for this static export. `frontend/vercel.json` supplies the build/output settings and clean URLs; keep Root Directory set to `frontend`.
+
 See [setup and deployment details](docs/SETUP.md) for environment variables, OAuth, and hosting settings.
 
 ## Checks
